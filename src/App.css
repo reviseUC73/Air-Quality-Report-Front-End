@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   font-family: "Prompt", sans-serif;
+  /* background-color: #282c34; */
 }
 
 .App-logo {
@@ -22,7 +23,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .App-link {
@@ -40,12 +41,13 @@
 
 .main_container {
   margin: auto;
-  width: 30%;
-  height: 440px;
-  max-width: 1200px;
+  width: 50%;
+  /* height: 440px; */
+  /* max-width: 1200px; */
   border-radius: 1rem;
 
-  background-color: rgba(94, 82, 187, 0.919);
+  /* background-color: rgba(94, 82, 187, 0.919); */
+  /* background-color: azure; */
   position: relative;
   top: 1rem;
   max-height: 1200px;
@@ -54,4 +56,67 @@
   -webkit-box-shadow: 3px 3px 9px 0px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 1px 3px 9px 5px rgba(0, 0, 0, 0.25);
   /* height: 100%; */
+}
+
+.s_container {
+  margin: auto;
+  width: 80%;
+  border-radius: 1rem;
+  /* background-color: #ffffff; */
+  background-color: rgba(94, 82, 187, 0.919);
+
+  padding-bottom: 0.5rem;
+  /* margin-bottom: 50px; */
+  position: relative;
+  /* top: 1rem; */
+  box-shadow: 1px 3px 9px 0px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 3px 3px 9px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 1px 3px 9px 5px rgba(0, 0, 0, 0.25);
+  /* height: 100%; */
+}
+
+.mini_container {
+  /* margin: auto; */
+  /* margin-top: 2rem; */
+  /* margin-bottom:2rem;   */
+  width: 20.1%;
+  margin: auto;
+  color: white;
+  margin: 3px;
+  /* border-radius: ; */
+  /* background: linear-gradient(0deg, #6b60c1, #6b60c1), rgba(95, 87, 153, 0.919); */
+  background-color: rgba(245, 245, 245, 0.224);
+  border-radius: 1rem;
+  box-shadow: 1px 3px 9px 0px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 3px 3px 9px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 1px 3px 9px 5px rgba(0, 0, 0, 0.25);
+  /* flex-direction: column; */
+  display: inline-block;
+  grid-template-columns: repeat(2, 1fr);
+  /* gap: 10000px; */
+}
+
+#bg_white {
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.33);
+}
+
+#topic_project {
+  margin: auto;
+  font-size: 1.4rem ;
+  font-weight:500;
+  color: rgba(240, 248, 255, 0.74);
+  padding-bottom: 0.6rem;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* position: relative; */
+  /* top: 10px; */
+  width: 40%;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+
+  background-color: rgba(255, 255, 255, 0.33);
+  box-shadow: 1px 3px 9px 0px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 3px 3px 9px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 1px 3px 9px 5px rgba(0, 0, 0, 0.25);
 }
