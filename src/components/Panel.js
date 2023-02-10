@@ -11,7 +11,7 @@ export default function Panel(props) {
       <div className="container">
         {/* <div className="p_title">Weather</div> */}
         <img
-          class="icon_po"
+          className="icon_po"
           src={img_air_url}
           alt="1"
           border="0"
