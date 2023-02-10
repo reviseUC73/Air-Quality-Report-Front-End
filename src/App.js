@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <ResponsiveAppBar />
-      <Panel weather="" number="" typeofair="" />
+      <Panel weather="" number="" typeofair="" img_air_url=""/>
     </div>
   );
 }

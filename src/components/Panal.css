@@ -1,9 +1,14 @@
 .container {
   margin: auto;
-  width: 30%;
-  height: 440px;
+  width: 28%;
+  height: 100%;
   max-width: 1200px;
+  max-height: 560px;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+
   border-radius: 1rem;
+  
 
   background-color: rgba(94, 82, 187, 0.919);
   position: relative;

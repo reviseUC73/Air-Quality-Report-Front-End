@@ -4,6 +4,7 @@ export default function Panel(props) {
   const weather = props.weather || "default";
   const number = props.number || "--";
   const typeofair = props.TypeOfAir || "Type of Air";
+  const img_air_url = props.img_air || "https://cdn3d.iconscout.com/3d/premium/thumb/raining-at-night-3321909-2775272.png";
 
   return (
     <div>
@@ -11,7 +12,7 @@ export default function Panel(props) {
         {/* <div className="p_title">Weather</div> */}
         <img
           class="icon_po"
-          src="https://cdn3d.iconscout.com/3d/premium/thumb/raining-at-night-3321909-2775272.png"
+          src={img_air_url}
           alt="1"
           border="0"
         />
