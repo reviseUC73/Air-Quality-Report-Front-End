@@ -30,3 +30,16 @@ export const GetData_LED = async () => {
     return null;
   }
 };
+
+export const PostData_LED = async (command, sensor_type) => {
+  const switch_ = command ? "turn_on" : "turn_off";
+  const baseURL = `https://airquality.zeqa.net/air_quality/${switch_}/${sensor_type}/`;
+
+  try {
+    const response = await axios.post(baseURL);
+    console.log(response.data)
+    return response.data;
+  } catch (err) {
+    return null;
+  }
+};
