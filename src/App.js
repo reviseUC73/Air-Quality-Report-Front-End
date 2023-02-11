@@ -1,5 +1,5 @@
 import "./App.css";
-
+import Graph from "./page/Graph";
 import Main_page from "./page/Main_page";
 
 function App() {

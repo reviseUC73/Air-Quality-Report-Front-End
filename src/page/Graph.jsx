@@ -10,9 +10,10 @@ const Graph = () => {
     useEffect(() => {
       const fetchData = async () => {
         getData().then(data => setTime(data))
+        // console.log(1)
       };
-  
-      const intervalId = setInterval(fetchData, 5000);
+      fetchData();
+      const intervalId = setInterval(fetchData, 60000);
       return () => clearInterval(intervalId);
     }, [])
 

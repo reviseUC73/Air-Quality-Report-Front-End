@@ -6,7 +6,8 @@ import {
     CartesianGrid,
     Tooltip,
     Legend,
-    Label
+    Label,
+    res
   } from "recharts";
 
 import '../styles/graphing.css'
@@ -33,7 +34,7 @@ const Garp = ({info,graphname,color}) =>{
       return `${value}`
     }
     if(graphname == "humidity"){
-      return `${value} %RH`
+      return `${value}% RH`
     }
   }
 
@@ -53,7 +54,7 @@ const Garp = ({info,graphname,color}) =>{
   return(
         <LineChart
       width={700}
-      height={250}
+      height={200}
       data={info}
       margin={{
         top: 5,

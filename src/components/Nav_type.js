@@ -54,7 +54,7 @@ export default function Nav_type(props) {
         CO
       </a>
       <a herf="/" onClick={tab_M}>
-        Tempalature
+        Temperature
       </a>
       <a herf="/" onClick={tab_L}>
         Humidity

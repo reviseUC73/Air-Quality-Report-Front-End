@@ -1,8 +1,7 @@
 .garp-container{
-    margin-top: 2rem;
-    margin-bottom: 2rem;
     display: flex;
     flex-direction: column;
-    gap : 1rem;
-
+    gap : 1.5rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
