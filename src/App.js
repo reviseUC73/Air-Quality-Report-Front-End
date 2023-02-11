@@ -13,7 +13,7 @@ function App() {
       </div>
       <footer className="bottom">
         <p className="center_text transclucent">
-          © Group 6 Exceed for educational only
+          © Group 6 Exceed 
         </p>
       </footer>
     </>
