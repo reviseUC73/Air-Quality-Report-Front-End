@@ -19,6 +19,91 @@ function Main_page() {
       temperature: true,
     },
   });
+
+  useEffect( () => {
+    try {
+      // const var_led_data = await 
+      GetData_LED().then((r)=>{
+        console.log(r)
+        console.log(r[this_mode])
+        setState((prevState) => ({
+          auto_run: {
+            ...prevState.auto_run,
+            current: r[this_mode],
+          },
+        }));
+      })
+      
+      // console.log("dwpdkpwdkpwdkwpd",var_led_data)
+    } catch (e) {
+      console.log(e);
+    }
+  }, []);
+
+
+  useEffect( () => {
+    try {
+      // const var_led_data = await 
+      GetData_LED().then((r)=>{
+        console.log(r)
+        console.log(r[this_mode])
+        setState((prevState) => ({
+          auto_run: {
+            ...prevState.auto_run,
+            current: r["co"],
+          },
+        }));
+      })
+      
+      // console.log("dwpdkpwdkpwdkwpd",var_led_data)
+    } catch (e) {
+      console.log(e);
+    }
+  }, []);
+
+
+  useEffect( () => {
+    try {
+      // const var_led_data = await 
+      GetData_LED().then((r)=>{
+        console.log(r)
+        console.log(r[this_mode])
+        setState((prevState) => ({
+          auto_run: {
+            ...prevState.auto_run,
+            current: r["humidity"],
+          },
+        }));
+      })
+      
+      // console.log("dwpdkpwdkpwdkwpd",var_led_data)
+    } catch (e) {
+      console.log(e);
+    }
+  }, []);
+
+
+
+
+
+
+  const DataLED = async () => {
+    try {
+      const var_led_data = await GetData_LED();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+
+
+
+
+
+
+
+
+
   const [light_state_menal, setLight_state_menal] = useState({
     light_meanal: true,
   });
@@ -30,18 +115,7 @@ function Main_page() {
     });
   };
 
-  const DataLED = async () => {
-    try {
-      const var_led_data = await GetData_LED();
-      // console.log("yioooo");
-      // console.log(var_led_data);
-      // console.log("yioooo");
-
-      // setState(var_led_data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  // DataLED();
   // DataLED();
   const [data_r, setData] = useState([]);
 
@@ -49,7 +123,7 @@ function Main_page() {
     try {
       const var_data = await GetData_recent();
       // console.log('DataRecent called')
-      console.log(data_r)
+      console.log(data_r);
       setData(var_data);
     } catch (e) {
       console.log(e);
@@ -62,6 +136,9 @@ function Main_page() {
     const intervalId = setInterval(() => DataRecent(), 5000);
     return () => clearInterval(intervalId);
   }, [state]);
+
+
+
 
   // useEffect(() => {
   //   // console.log(state);
@@ -92,7 +169,6 @@ function Main_page() {
     // console.log("CALLLLLLLLLLL");
     PostData_LED(e.target.checked, this_mode);
     setState({
-      // ...auto_meanal,
       auto_run: {
         ...auto_run,
         [this_mode]: e.target.checked,
@@ -114,7 +190,7 @@ function Main_page() {
     <div className="App">
       <div className="s_container">
         <div id="topic_project">Air Quality Report</div>
-        {data_r.length > 0 && (
+        {data_r?.length > 0 && (
           <Panel
             weather={data_r[0][this_status]}
             number={data_r[0][type_measure]}
@@ -145,21 +221,6 @@ function Main_page() {
           />
         </div>
 
-        {/*         <div className="mini_container">
-          <div id="bg_white">◽️ Light Status</div>
-
-          <FormControlLabel
-            control={
-              <Switch
-                checked={state.auto_meanal}
-                onChange={handleChange_meanal}
-                name="auto_meanal"
-              />
-            }
-            label={state.auto_meanal ? "Auto" : "Meanal"}
-          />
-        </div> */}
-
         <div className="mini_container">
           <div id="bg_white">◽️ LED-SWITCH</div>
           <FormControlLabel
@@ -174,6 +235,7 @@ function Main_page() {
           />
         </div>
         {/* <h1>{state}{light_state_menal}</h1> */}
+        <div id="bottom_project">pfkwpfk</div>
       </div>
     </div>
   );
