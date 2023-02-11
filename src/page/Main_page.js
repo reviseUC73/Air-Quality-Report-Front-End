@@ -49,7 +49,7 @@ function Main_page() {
     try {
       const var_data = await GetData_recent();
       // console.log('DataRecent called')
-      console.log(data_r)
+      console.log(data_r);
       setData(var_data);
     } catch (e) {
       console.log(e);
@@ -141,7 +141,7 @@ function Main_page() {
                 name="light_meanal"
               />
             }
-            label={light_state_menal.light_meanal ? "Auto" : "Meanal"}
+            label={light_state_menal.light_meanal ? "Auto" : "Manual"}
           />
         </div>
 
@@ -174,6 +174,12 @@ function Main_page() {
           />
         </div>
         {/* <h1>{state}{light_state_menal}</h1> */}
+        <a
+          href="https://airquality.zeqa.net/air_quality/subscribe_line_notify/"
+          className="remove_underline"
+        >
+          <div id="bottom_project">Get LINE Notification</div>
+        </a>
       </div>
     </div>
   );

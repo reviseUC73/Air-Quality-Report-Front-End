@@ -51,12 +51,14 @@ export default function Panel(props) {
   return (
     <div className="container">
       {/* <div className="p_title">Weather</div> */}
-      <img
-        className="icon_po"
-        src={chose_img(props.img_air_url)}
-        alt="1"
-        border="0"
-      />
+      <div className="img_frame">
+        <img
+          className="icon_po"
+          src={chose_img(props.img_air_url)}
+          alt="1"
+          border="0"
+        />
+      </div>
       <div className="name_po">{weather}</div>
       <div className="number">{number + " " + unit}</div>
       <div id="type_measure"> {typeofair} </div>
