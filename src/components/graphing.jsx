@@ -57,7 +57,7 @@ const Garp = ({info,graphname,color}) =>{
       height={200}
       data={info}
       margin={{
-        top: 5,
+        top: 20,
         right: 30,
         left: 20,
         bottom: 5

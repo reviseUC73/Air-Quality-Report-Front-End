@@ -1,6 +1,6 @@
 import "../App.css";
 import Panel from "../components/Panel";
-import { GetData_LED, GetData_recent } from "../services/ser";
+import { GetData_LED, GetData_recent, PostData_LED } from "../services/ser";
 import { useEffect, useState } from "react";
 import Nav_type from "../components/Nav_type";
 import * as React from "react";
@@ -33,9 +33,9 @@ function Main_page() {
   const DataLED = async () => {
     try {
       const var_led_data = await GetData_LED();
-      console.log("yioooo");
-      console.log(var_led_data);
-      console.log("yioooo");
+      // console.log("yioooo");
+      // console.log(var_led_data);
+      // console.log("yioooo");
 
       // setState(var_led_data);
     } catch (e) {
@@ -48,21 +48,20 @@ function Main_page() {
   const DataRecent = async () => {
     try {
       const var_data = await GetData_recent();
-      console.log(var_data);
+      // console.log('DataRecent called')
+      console.log(data_r)
       setData(var_data);
     } catch (e) {
       console.log(e);
     }
   };
   useEffect(() => {
-    // console.log(this_mode);
-    // console.log(setThis_mode);
-
-
-    // console.log(state);
     DataLED();
     DataRecent();
-  },[]);
+    console.log("state called");
+    const intervalId = setInterval(() => DataRecent(), 5000);
+    return () => clearInterval(intervalId);
+  }, [state]);
 
   // useEffect(() => {
   //   // console.log(state);
@@ -88,6 +87,10 @@ function Main_page() {
     const { auto_meanal, auto_run } = state;
     // console.log(state);
     // console.log(light_state_menal);
+    // console.log('this_mode', this_mode)
+    // console.log(e.target.checked)
+    // console.log("CALLLLLLLLLLL");
+    PostData_LED(e.target.checked, this_mode);
     setState({
       // ...auto_meanal,
       auto_run: {
@@ -105,7 +108,7 @@ function Main_page() {
     // });
   };
 
-  const type_measure = this_mode == "co" ? "CO" : this_mode;
+  const type_measure = this_mode === "co" ? "CO" : this_mode;
   const this_status = type_measure + "_status";
   return (
     <div className="App">
@@ -115,8 +118,9 @@ function Main_page() {
           <Panel
             weather={data_r[0][this_status]}
             number={data_r[0][type_measure]}
-            typeofair={type_measure}
-            img_air_url=""
+            TypeOfAir={type_measure}
+            img_air_url={data_r[0][this_status]}
+            // para = {data_r[0]}
           />
         )}
         <Nav_type
@@ -127,7 +131,7 @@ function Main_page() {
         />
 
         <div className="mini_container">
-          <div id="bg_white">◽️ Light Status</div>
+          <div id="bg_white">◽️ Dark Mode</div>
 
           <FormControlLabel
             control={
@@ -157,7 +161,7 @@ function Main_page() {
         </div> */}
 
         <div className="mini_container">
-          <div id="bg_white">◽️ Auto-Run</div>
+          <div id="bg_white">◽️ LED-SWITCH</div>
           <FormControlLabel
             control={
               <Switch
