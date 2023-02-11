@@ -1,5 +1,6 @@
 import "../App.css";
 import Panel from "../components/Panel";
+import axios from "axios";
 import { GetData_LED, GetData_recent, PostData_LED } from "../services/ser";
 import { useEffect, useState } from "react";
 import Nav_type from "../components/Nav_type";
@@ -63,6 +64,18 @@ function Main_page() {
     return () => clearInterval(intervalId);
   }, [state]);
 
+  useEffect(() => {
+    axios
+      .get("https://airquality.zeqa.net/air_quality/get_led_status/")
+      .then((res) => {
+        setState({
+          auto_run: {
+            current: res.data.temperature,
+            ...res.data,
+          },
+        });
+      });
+  }, []);
   // useEffect(() => {
   //   // console.log(state);
   //   DataRecent();
