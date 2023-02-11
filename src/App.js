@@ -4,9 +4,11 @@ import Main_page from "./page/Main_page";
 
 function App() {
   return (
-    <div>
+    <div className='all-container'>
       <Main_page />
+      <div className='graph-container'><Graph/></div>
     </div>
+    
   );
 }
 
