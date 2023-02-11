@@ -20,3 +20,13 @@ export const GetData_recent = async () => {
     return null;
   }
 };
+export const GetData_LED = async () => {
+  const baseURL = "https://airquality.zeqa.net/air_quality/get_led_status/";
+
+  try {
+    const response = await axios.get(baseURL);
+    return response.data;
+  } catch (err) {
+    return null;
+  }
+};
