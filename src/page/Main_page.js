@@ -7,12 +7,13 @@ import Nav_type from "../components/Nav_type";
 import * as React from "react";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
+// import { Link } from "react-router-dom";
 
-function Main_page() {
+// import {Link, useNavigate} from 'react-router-dom';
+
+function Main_page({color_mode, HandleChange_color_mode}) {
   const [this_mode, setThismode] = useState("temperature");
   const [state, setState] = React.useState({
-    // auto_meanal: true,
-    // auto_run: true,
     auto_run: {
       current: false,
       co: true,
@@ -20,32 +21,16 @@ function Main_page() {
       temperature: true,
     },
   });
-  const [light_state_menal, setLight_state_menal] = useState({
-    light_meanal: true,
-  });
-
-  const handleChange_light_state = (event) => {
-    setLight_state_menal({
-      ...state,
-      [event.target.name]: event.target.checked,
-    });
-  };
 
   const DataLED = async () => {
     try {
       const var_led_data = await GetData_LED();
-      // console.log("yioooo");
-      // console.log(var_led_data);
-      // console.log("yioooo");
-
-      // setState(var_led_data);
     } catch (e) {
       console.log(e);
     }
   };
-  // DataLED();
-  const [data_r, setData] = useState([]);
 
+  const [data_r, setData] = useState([]);
   const DataRecent = async () => {
     try {
       const var_data = await GetData_recent();
@@ -76,33 +61,9 @@ function Main_page() {
         });
       });
   }, []);
-  // useEffect(() => {
-  //   // console.log(state);
-  //   DataRecent();
-  // }, [state]);
-  // const handleChange_meanal = (e) => {
-  // console.log(air_mode)
-  // console.log(this_status);
-  // console.log([this_mode])
-  // const { auto_run,auto_meanal } = state; // De-structure keep old data >>to save(or state.auto_run )
-  // console.log(state)
-  // setState({
-  //   auto_meanal: e.target.checked,
-  //   auto_run: auto_run,
-  // });
-  // };
 
   const handleChange = (e) => {
-    // console.log(air_mode)
-    // console.log(this_status);
-    // console.log([this_mode]);
-    // console.log(state)
     const { auto_meanal, auto_run } = state;
-    // console.log(state);
-    // console.log(light_state_menal);
-    // console.log('this_mode', this_mode)
-    // console.log(e.target.checked)
-    // console.log("CALLLLLLLLLLL");
     PostData_LED(e.target.checked, this_mode);
     setState({
       // ...auto_meanal,
@@ -112,20 +73,42 @@ function Main_page() {
         current: e.target.checked,
       },
     });
-    // setState({
-    //   ...state,
-    //   auto_run: {
-    //     ...state.auto_run
-    //   },
-    //   [e.target.name]: e.target.checked,
-    // });
   };
 
+  function css_mode(nunm, unit) {
+    console.log(typeof nunm);
+    if (unit === "temperature") {
+      if (nunm > 37) {
+        return ".s_container-green";
+      } else if (nunm < 15) {
+        return ".s_container-blue"
+      } else {
+        return "normal";
+      }
+    } else if (unit === "humidity") {
+      if (nunm > 80) {
+        return "red";
+      } else if (nunm < 20) {
+        return "blue";
+      } else {
+        return "noraml  ";
+      }
+      // return;
+      // } else if (unit === "co") {
+      //   if (nunm > 5) {
+      //     return "red";
+      //   } else if (nunm < 1) {
+      //     return "blue";
+      //   } else {
+      //     return "green";
+      //   }
+    }
+  }
   const type_measure = this_mode === "co" ? "CO" : this_mode;
   const this_status = type_measure + "_status";
   return (
     <div className="App">
-      <div className="s_container">
+      <div className={color_mode ? "s_container_dark " : "s_container"}>
         <div id="topic_project">Air Quality Report</div>
         {data_r.length > 0 && (
           <Panel
@@ -133,7 +116,6 @@ function Main_page() {
             number={data_r[0][type_measure]}
             TypeOfAir={type_measure}
             img_air_url={data_r[0][this_status]}
-            // para = {data_r[0]}
           />
         )}
         <Nav_type
@@ -142,37 +124,19 @@ function Main_page() {
           state={state}
           setState={setState}
         />
-
         <div className="mini_container">
           <div id="bg_white">◽️ Dark Mode</div>
-
           <FormControlLabel
             control={
               <Switch
-                checked={light_state_menal["light_meanal"]}
-                onChange={handleChange_light_state}
-                name="light_meanal"
+                checked={color_mode}
+                onChange={HandleChange_color_mode}
+                name="change_color"
               />
             }
-            label={light_state_menal.light_meanal ? "Auto" : "Manual"}
+            label={color_mode ? "Dark Mode" : "Normal Mode"}
           />
         </div>
-
-        {/*         <div className="mini_container">
-          <div id="bg_white">◽️ Light Status</div>
-
-          <FormControlLabel
-            control={
-              <Switch
-                checked={state.auto_meanal}
-                onChange={handleChange_meanal}
-                name="auto_meanal"
-              />
-            }
-            label={state.auto_meanal ? "Auto" : "Meanal"}
-          />
-        </div> */}
-
         <div className="mini_container">
           <div id="bg_white">◽️ LED-SWITCH</div>
           <FormControlLabel
@@ -186,7 +150,6 @@ function Main_page() {
             label={state.auto_run.current ? "ON" : "OFF"}
           />
         </div>
-        {/* <h1>{state}{light_state_menal}</h1> */}
         <a
           href="https://airquality.zeqa.net/air_quality/subscribe_line_notify/"
           className="remove_underline"
@@ -194,7 +157,16 @@ function Main_page() {
           <div id="bottom_project">Get LINE Notification</div>
         </a>
       </div>
+      {/* <Link
+        to={{
+          pathname: "./Graph.jsx",
+          state: { id: 1, name: "sabaoon", shirt: "green" },
+        }}
+      >
+        Learn More
+      </Link> */}
     </div>
   );
 }
+
 export default Main_page;
