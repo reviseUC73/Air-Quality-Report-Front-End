@@ -26,7 +26,7 @@ export default function Panel(props) {
       return "https://media.discordapp.net/attachments/1067738870503972864/1073880023934697543/verygood.png";
     } else if (status === "Good") {
       return "https://cdn.discordapp.com/attachments/1067738870503972864/1073880023737577522/good.png";
-    } else if (status === "Normal") {
+    } else if (status === "CO_Normal") {
       return "https://cdn.discordapp.com/attachments/1067738870503972864/1073880024639340614/normal.png";
     } else if (status === "Health affected") {
       return "https://cdn.discordapp.com/attachments/1067738870503972864/1073880024375111773/Health_affected.png";
