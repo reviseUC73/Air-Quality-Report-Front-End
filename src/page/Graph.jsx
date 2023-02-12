@@ -13,7 +13,7 @@ const Graph = () => {
         // console.log(1)
       };
       fetchData();
-      const intervalId = setInterval(fetchData, 60000);
+      const intervalId = setInterval(fetchData, 5000);
       return () => clearInterval(intervalId);
     }, [])
 
