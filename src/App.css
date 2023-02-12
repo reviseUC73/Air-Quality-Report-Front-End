@@ -83,7 +83,7 @@
   box-shadow: 1px 3px 9px 0px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 3px 3px 9px 0px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 1px 3px 9px 5px rgba(0, 0, 0, 0.74);
-  background: linear-gradient(-45deg, #9ab340bc, #378b33, #0b7d269f, hsla(108, 96%, 18%, 0.557));
+  background: linear-gradient(-45deg, #9ab340bc, #378b33, #0b7d269f, hsla(108, 94%, 24%, 0.557));
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }

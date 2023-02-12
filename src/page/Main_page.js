@@ -102,7 +102,7 @@ function Main_page({color_mode, HandleChange_color_mode}) {
       //   } else {
       //     return "green";
       //   }
-    }
+    } 
   }
   const type_measure = this_mode === "co" ? "CO" : this_mode;
   const this_status = type_measure + "_status";
