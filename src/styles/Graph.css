@@ -1,0 +1,7 @@
+.garp-container{
+    display: flex;
+    flex-direction: column;
+    gap : 1.5rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
